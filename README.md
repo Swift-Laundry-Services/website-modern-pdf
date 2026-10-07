@@ -4,7 +4,7 @@ Marketing website for **Swift Laundry Services**, a mobile laundry pickup and de
 
 - **Stack:** static HTML, modern CSS and a little vanilla JavaScript. No framework, no build step, no dependencies.
 - **Hosting:** GitHub Pages via GitHub Actions (`.github/workflows/pages.yml`). Every push to `main` deploys to
-  **https://swift-laundry-services.github.io/website/**. You can also deploy by hand from the Actions tab ("Run workflow").
+  **https://swift-laundry-services.github.io/website-pdf/**. You can also deploy by hand from the Actions tab ("Run workflow").
 - All asset and page links are **relative**, so the same files work under the `/website/` project path and at a domain root
   (for example `swiftlaundryservices.com`). No custom domain or `CNAME` is configured yet.
 
@@ -103,7 +103,7 @@ export files with the same names and widths and update the `alt` text if the sub
 When `swiftlaundryservices.com` is pointed at GitHub Pages:
 
 1. Add the domain in **Settings → Pages** (this creates the `CNAME`) and update DNS.
-2. Search and replace `https://swift-laundry-services.github.io/website/` with `https://swiftlaundryservices.com/` in the HTML files,
+2. Search and replace `https://swift-laundry-services.github.io/website-pdf/` with `https://swiftlaundryservices.com/` in the HTML files,
    `robots.txt` and `sitemap.xml` (canonical, Open Graph and JSON-LD URLs).
 3. Nothing else needs to change, because paths are relative. `404.html` detects whether it's under `/website/` automatically.
 
