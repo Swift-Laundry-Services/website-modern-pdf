@@ -161,7 +161,7 @@ html.lenis, html.lenis body { height: auto; }
 .menu-panel a:not(.btn) .lu { color: var(--purple); width: 20px; height: 20px; }
 .menu-panel a:not(.btn):hover, .menu-panel a[aria-current="page"] { background: var(--lav-100); }
 .menu-panel .btn { margin: 8px 4px 4px; display: flex; }
-.sheet-backdrop { position: fixed; inset: 0; z-index: 55; background: rgba(23, 7, 51, .35); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); opacity: 0; transition: opacity .3s; }
+.sheet-backdrop { position: fixed; inset: 0; z-index: 55; background: rgba(14, 4, 32, .72); -webkit-backdrop-filter: blur(12px) saturate(.9); backdrop-filter: blur(12px) saturate(.9); opacity: 0; transition: opacity .3s; }
 .menu-open .sheet-backdrop { opacity: 1; }
 
 /* ---------- inner-page title band ---------- */
@@ -510,7 +510,7 @@ a.contact-card:hover { transform: translateY(-4px); box-shadow: var(--sh-2); }
   .brand img { width: 104px; }
   .header-actions { gap: 6px; }
   /* bottom sheet menu */
-  .menu-panel { position: fixed; left: 10px; right: 10px; top: auto; bottom: calc(var(--tabbar-h) + 4px); width: auto; z-index: 70; border-radius: 26px; padding: 10px; max-height: calc(100dvh - var(--tabbar-h) - 90px); overflow-y: auto; animation: sheet-up .4s var(--ease); }
+  .menu-panel { position: fixed; left: 10vw; right: 10vw; top: auto; bottom: calc(var(--tabbar-h) + 4px); width: auto; z-index: 70; border-radius: 26px; padding: 10px; max-height: calc(100dvh - var(--tabbar-h) - 90px); overflow-y: auto; animation: sheet-up .4s var(--ease); }
   @keyframes sheet-up { from { transform: translateY(24px); opacity: 0; } to { transform: none; opacity: 1; } }
   .menu-panel ul { grid-template-columns: 1fr 1fr; gap: 6px; }
   .menu-panel a:not(.btn) { flex-direction: column; align-items: flex-start; justify-content: center; gap: 6px; min-height: 84px; padding: 12px 14px; background: var(--lav-50); border-radius: 18px; font-size: .95rem; }
@@ -643,7 +643,7 @@ a.contact-card:hover { transform: translateY(-4px); box-shadow: var(--sh-2); }
 .who { overflow-x: clip; }
 @media (max-width: 860px) { .who-photo::before { inset: auto -8px -10px auto; } }
 .menu-panel { position: fixed; z-index: 70; top: calc(var(--header-h) + 14px); right: max(var(--gutter), calc((100vw - 1440px) / 2 + var(--gutter))); }
-@media (max-width: 860px) { .menu-panel { top: auto; right: 10px; } }
+@media (max-width: 860px) { .menu-panel { top: auto; left: 10vw; right: 10vw; } }
 @media (max-width: 860px) {
   .hero-bg { height: 74vw; }
   .hero-chip { font-size: .72rem; white-space: nowrap; }
@@ -653,3 +653,6 @@ a.contact-card:hover { transform: translateY(-4px); box-shadow: var(--sh-2); }
 .contact-card .value, .contact-card .meta { display: block; }
 .contact-card .value { margin-top: 4px; }
 .contact-card .meta { margin-top: 6px; }
+
+/* Mobile: menu opens from the tab bar "More" only; header keeps just the call button */
+@media (max-width: 860px) { .site-header .menu-toggle { display: none !important; } }
