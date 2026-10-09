@@ -442,3 +442,17 @@ document.addEventListener("toggle", function (e) {
     if (o !== d && !o.contains(d) && !d.contains(o)) o.open = false;
   });
 }, true);
+
+/* Safety: never leave the menu backdrop stuck (back/forward cache, tab restore) */
+(function () {
+  function reset() {
+    var p = document.getElementById("site-menu"), b = document.querySelector("[data-sheet-backdrop]");
+    if (p) p.hidden = true; if (b) b.hidden = true;
+    document.documentElement.classList.remove("menu-open");
+    document.querySelectorAll('[aria-controls="site-menu"]').forEach(function (x) { x.setAttribute("aria-expanded", "false"); });
+    if (window.__lenis) window.__lenis.start();
+  }
+  window.addEventListener("pageshow", reset);
+  var b = document.querySelector("[data-sheet-backdrop]");
+  if (b) b.addEventListener("touchend", function () { setTimeout(reset, 0); }, { passive: true });
+})();
