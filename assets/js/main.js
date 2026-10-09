@@ -433,3 +433,12 @@
     window.addEventListener("load", function () { navigator.serviceWorker.register("sw.js").catch(function () {}); });
   }
 })();
+
+/* Accordions: opening one closes the others (nested ones keep their parent open) */
+document.addEventListener("toggle", function (e) {
+  var d = e.target;
+  if (!(d instanceof HTMLDetailsElement) || !d.open) return;
+  document.querySelectorAll("details[open]").forEach(function (o) {
+    if (o !== d && !o.contains(d) && !d.contains(o)) o.open = false;
+  });
+}, true);
