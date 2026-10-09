@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<base href="/website-modern-pdf/">
 <script>
   /* 404.html can be served at any depth (e.g. /website/a/b), so point relative URLs at the site root.
      On GitHub Pages the site lives under /website-modern-pdf/; on a custom domain it lives at /. */
   (function () {
     var PROJECT_BASE = "/website-modern-pdf/";
     var root = location.pathname.indexOf(PROJECT_BASE) === 0 ? PROJECT_BASE : "/";
-    var b = document.createElement("base"); b.href = root; document.head.appendChild(b);
+    var b = document.querySelector("base") || document.head.appendChild(document.createElement("base")); b.href = root;
     var css = document.createElement("link"); css.rel = "stylesheet"; css.href = "assets/css/styles.css"; document.head.appendChild(css);
   })();
 </script>
