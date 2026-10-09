@@ -1,11 +1,18 @@
-# Swift Laundry Services: website
+# Swift Laundry Services: website (version 3, modernized PDF design)
+
+> **Version 3 of 3.** This repo is the owner's PDF design, modernized: same content, section order, colours and photos, with
+> refined typography, soft animated background blobs, glass cards, Lucide icons, smooth scrolling, AI-upscaled imagery and an
+> app-style mobile layout (bottom tab bar, installable PWA). Live at **https://swift-laundry-services.github.io/website-modern-pdf/**.
+> The other two versions are kept separately:
+> 1. Modern design: [Swift-Laundry-Services/website](https://github.com/Swift-Laundry-Services/website), live at https://swift-laundry-services.github.io/website/
+> 2. PDF design (faithful to the owner's PDF): [Swift-Laundry-Services/website-pdf](https://github.com/Swift-Laundry-Services/website-pdf), live at https://swift-laundry-services.github.io/website-pdf/
 
 Marketing website for **Swift Laundry Services**, a mobile laundry pickup and delivery service for Garfield Heights and the Cleveland suburbs.
 
-- **Stack:** static HTML, modern CSS and a little vanilla JavaScript. No framework, no build step, no dependencies.
+- **Stack:** static HTML, modern CSS and vanilla JavaScript. No framework and no build step. [Lenis](https://github.com/darkroomengineering/lenis) (MIT) is self-hosted in `assets/vendor/` for smooth scrolling; [Lucide](https://lucide.dev) icons (ISC) are inlined as SVG.
 - **Hosting:** GitHub Pages via GitHub Actions (`.github/workflows/pages.yml`). Every push to `main` deploys to
-  **https://swift-laundry-services.github.io/website-pdf/**. You can also deploy by hand from the Actions tab ("Run workflow").
-- All asset and page links are **relative**, so the same files work under the `/website/` project path and at a domain root
+  **https://swift-laundry-services.github.io/website-modern-pdf/**. You can also deploy by hand from the Actions tab ("Run workflow").
+- All asset and page links are **relative**, so the same files work under the `/website-modern-pdf/` project path and at a domain root
   (for example `swiftlaundryservices.com`). No custom domain or `CNAME` is configured yet.
 
 ## Structure
@@ -19,16 +26,18 @@ contact.html          Contact details, service-area map, contact / free-quote fo
 order.html            "Order a pickup" form
 login.html            Login / create account (placeholder: accounts are "coming soon")
 404.html              Not-found page (works at any URL depth on GitHub Pages)
-site.webmanifest      PWA / home-screen icon metadata
+site.webmanifest      PWA manifest (installable to the home screen, with shortcuts)
+sw.js                 Small network-first service worker (offline fallback)
 robots.txt, sitemap.xml
 favicon.ico
 assets/
   css/styles.css      All styles (design tokens / brand colours at the top)
   js/site-config.js   <- business details, prices, form targets: EDIT HERE
-  js/main.js          Behaviour (menu, forms, price tables, animations)
+  js/main.js          Behaviour (menu sheet, testimonials carousel, forms, price tables, smooth scroll, reveal animations)
+  vendor/             lenis.min.js (smooth scrolling) + licences for Lenis and Lucide
   fonts/              Self-hosted Montserrat (variable, latin), SIL OFL
   img/                Logos, icons, Open Graph image
-  img/design/         Images extracted from the owner's design PDF (WebP sizes + JPG/PNG fallback)
+  img/design/         Images from the owner's design PDF, AI-upscaled (AVIF + WebP sizes + JPG/PNG fallback)
   img/design/icons/   SVG icons (PDF vectors + Font Awesome brand icons)
 .github/workflows/pages.yml   GitHub Pages deployment
 ```
@@ -56,7 +65,8 @@ All of these are in **`assets/js/site-config.js`**. Search it for `TODO`.
 | Email address | `business.email` (email links stay hidden while it's empty) |
 | Street address | `business.address` (hidden while empty) |
 | Hours | `business.hours` (optional) |
-| Social links | `social.instagram`, `social.x`, `social.facebook` (icons appear on the Contact page once set) |
+| Social links | `social.instagram`, `social.facebook` (icons appear on the Contact page and footer once set) |
+| Testimonials | `testimonials` (one real review + clearly labelled sample placeholders; replace samples with real reviews) |
 | Wash & fold prices | `pricing.washFold`, `pricing.extraPerLb` |
 | Dry cleaning prices | `pricing.dryCleaning` |
 | Ironing prices | `pricing.ironing` |
@@ -94,18 +104,21 @@ and `map.linkUrl` once there is an address. No API key needed.
 
 ### Images
 
-All images come from the owner's design PDF and live in `assets/img/design/` as `NAME-WIDTH.webp` plus a fallback
-(`.jpg`, or `.png` for the transparent bag/duvet images). `tools/make_design_images.py` regenerates them. To replace one,
-export files with the same names and widths and update the `alt` text if the subject changes.
+All photos come from the owner's design PDF. For this version each one was re-extracted from the PDF at its native resolution,
+cropped exactly as in the design, upscaled 4x with **Real-ESRGAN** (AI super-resolution), then lightly sharpened and colour-polished.
+They live in `assets/img/design/` as `NAME-WIDTH.avif` and `NAME-WIDTH.webp` (full-width photos up to 3840 px, card photos up to
+2400 px) with a `NAME-1600.jpg` fallback; the transparent bag/duvet images are `.webp` + `.png`. Pages use `srcset`/`sizes`, so
+phones download small files and only large or high-density screens get the big ones. Everything below the hero is lazy-loaded.
+To replace a photo, export files with the same names and widths and update the `alt` text if the subject changes.
 
 ### Switching to the custom domain later
 
 When `swiftlaundryservices.com` is pointed at GitHub Pages:
 
 1. Add the domain in **Settings → Pages** (this creates the `CNAME`) and update DNS.
-2. Search and replace `https://swift-laundry-services.github.io/website-pdf/` with `https://swiftlaundryservices.com/` in the HTML files,
+2. Search and replace `https://swift-laundry-services.github.io/website-modern-pdf/` with `https://swiftlaundryservices.com/` in the HTML files,
    `robots.txt` and `sitemap.xml` (canonical, Open Graph and JSON-LD URLs).
-3. Nothing else needs to change, because paths are relative. `404.html` detects whether it's under `/website/` automatically.
+3. Nothing else needs to change, because paths are relative. `404.html` detects whether it's under `/website-modern-pdf/` automatically.
 
 ## Brand
 
@@ -134,6 +147,7 @@ Fonts: **Montserrat** (weights 500–800), self-hosted, as in the design PDF.
 
 Photos and icons are taken from the owner-supplied design PDF (Swift Laundry Services). Confirm the owner holds the rights
 to the stock photos used in that PDF.
+UI icons: [Lucide](https://lucide.dev), ISC licence (see `assets/vendor/LICENSE-lucide.txt`).
 Social icons: [Font Awesome Free](https://fontawesome.com/license/free) brand icons, CC BY 4.0.
 Map: © Google (embedded map).
 Fonts: [Montserrat](https://github.com/JulietaUla/Montserrat), SIL Open Font License 1.1 (see `assets/fonts/`).
@@ -146,7 +160,7 @@ Fonts: [Montserrat](https://github.com/JulietaUla/Montserrat), SIL Open Font Lic
 4. FAQ answers, and the "Limitations" sub-items (size, weight, unsanitary laundry) wording.
 5. Confirm or remove the extra services ("More ways we can help": commercial, Airbnb/rental linens, event linens,
    delicates, sports uniforms, alterations) and the 7 extra industries behind "View all industries", and give their prices.
-6. More real customer reviews (only one is shown).
+6. Real customer reviews to replace the "Sample review" placeholders in `testimonials` (only one review is real).
 7. New logo file → `brand.logo`; email → `contact.email`; Instagram/Facebook URLs → `social`.
 8. Street address (for the Contact card and map), if you want one public.
 9. Confirm rights to the stock photos inside the design PDF.

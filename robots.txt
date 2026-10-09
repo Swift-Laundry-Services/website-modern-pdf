@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://swift-laundry-services.github.io/website-pdf/sitemap.xml
+Sitemap: https://swift-laundry-services.github.io/website-modern-pdf/sitemap.xml

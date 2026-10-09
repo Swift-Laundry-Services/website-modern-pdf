@@ -59,6 +59,38 @@ window.SWIFT_CONFIG = {
   },
 
   /* ------------------------------------------------------------------------
+     TESTIMONIALS (Home page carousel). One entry per slide, shown in order.
+     Only the first entry is a real review (the one in the design PDF).
+     The rest are clearly labelled SAMPLE placeholders: they show a
+     "Sample review" tag and no stars. To add a real review, replace a
+     sample entry with the customer's words and set sample:false.
+       quote     the review text (required)
+       name      customer's name, e.g. "Maria G." (ask permission first)
+       anonymous true = show a person icon instead of initials
+       detail    what they ordered, e.g. "Wash & fold, weekly"
+       location  e.g. "Garfield Heights, OH"
+       rating    1-5 stars (real reviews only)
+       sample    true = placeholder (shows the "Sample review" tag)
+     Delete sample entries you don't need; the carousel adapts.
+     ------------------------------------------------------------------------ */
+  testimonialsAutoplayMs: 5000,
+  testimonials: [
+    { quote: "Best prices in Garfield Heights area and service is perfection. Had to order uniform cleaning for my office and they were prompt and super professional.",
+      name: "Swift Laundry customer", anonymous: true, detail: "Office uniform cleaning", location: "Garfield Heights area", rating: 5, sample: false },
+    // TODO(owner): replace the samples below with real customer reviews.
+    { quote: "Sample review: a real customer’s words about our wash & fold service will go here.",
+      name: "Customer name", detail: "Wash & fold", location: "City, OH", sample: true },
+    { quote: "Sample review: a real customer’s words about pickup and delivery will go here.",
+      name: "Customer name", detail: "Pickup & delivery", location: "City, OH", sample: true },
+    { quote: "Sample review: a real customer’s words about our dry cleaning will go here.",
+      name: "Customer name", detail: "Dry cleaning", location: "City, OH", sample: true },
+    { quote: "Sample review: a real customer’s words about our ironing service will go here.",
+      name: "Customer name", detail: "Ironing", location: "City, OH", sample: true },
+    { quote: "Sample review: a business customer’s words about our commercial laundry will go here.",
+      name: "Business name", detail: "Commercial laundry", location: "City, OH", sample: true }
+  ],
+
+  /* ------------------------------------------------------------------------
      PRICES (USD). Rendered into the Home and Services pages.
      confirmed:false = value copied from the design concept that looks like
      placeholder data. While ANY price is unconfirmed, the site shows a small
