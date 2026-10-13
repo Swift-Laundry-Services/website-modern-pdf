@@ -10,7 +10,7 @@ window.SWIFT_CONFIG = {
     name: "Swift Laundry Services",
     phoneDisplay: "(714) 402-7530",
     phoneE164: "+17144027530",          // used for tel: and sms: links
-    email: "",                          // TODO(owner): business email, e.g. "hello@yourdomain.com". Email links stay hidden while empty.
+    email: "swiftlaundryservicess@gmail.com",
     address: "",                        // TODO(owner): street address (or leave empty if you don't want it public). Hidden while empty.
     serviceArea: "Garfield Heights & the Cleveland suburbs",
     hours: ""                           // TODO(owner, optional): opening / pickup hours. Hidden while empty.
@@ -38,8 +38,8 @@ window.SWIFT_CONFIG = {
   /* Social profiles: full URLs. Icons appear on the Contact page and footer once set.
      (There is no X / Twitter account, so the site has no X icon.) */
   social: {
-    instagram: "",                      // TODO(owner): e.g. "https://www.instagram.com/yourhandle"
-    facebook: ""                        // TODO(owner): e.g. "https://www.facebook.com/yourpage"
+    instagram: "https://www.instagram.com/swiftlaundryservicess/",
+    facebook: "https://www.facebook.com/search/top?q=Swift%20Laundry%20Garfield%20Heights"  // TODO: replace with the page's direct URL (facebook.com/<page>) once confirmed
   },
 
   /* ------------------------------------------------------------------------
