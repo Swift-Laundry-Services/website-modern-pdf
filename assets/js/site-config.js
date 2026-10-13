@@ -54,7 +54,7 @@ window.SWIFT_CONFIG = {
      ------------------------------------------------------------------------ */
   forms: {
     endpoint: "",                       // TODO(owner): e.g. "https://formspree.io/f/xxxxxxx"
-    email: "",                          // TODO(owner): inbox for mailto fallback (can match business.email)
+    email: "swiftlaundryservicess@gmail.com",  // mailto fallback (matches business.email)
     loginEnabled: false                 // Customer accounts don't exist yet; login page shows a "coming soon" state.
   },
 
