@@ -1,7 +1,7 @@
 # Swift Laundry Services: website (version 3, modernized PDF design)
 
 > **Version 3 of 3.** This repo is the owner's PDF design, modernized: same content, section order, colours and photos, with
-> refined typography, soft animated background blobs, glass cards, Lucide icons, smooth scrolling, AI-upscaled imagery and an
+> refined typography, soft animated background blobs, glass cards, Lucide icons, smooth scrolling, upscaled imagery and an
 > app-style mobile layout (bottom tab bar, installable PWA). Live at **https://swift-laundry-services.github.io/website-modern-pdf/**.
 > The other two versions are kept separately:
 > 1. Modern design: [Swift-Laundry-Services/website](https://github.com/Swift-Laundry-Services/website), live at https://swift-laundry-services.github.io/website/
@@ -37,7 +37,7 @@ assets/
   vendor/             lenis.min.js (smooth scrolling) + licences for Lenis and Lucide
   fonts/              Self-hosted Montserrat (variable, latin), SIL OFL
   img/                Logos, icons, Open Graph image
-  img/design/         Images from the owner's design PDF, AI-upscaled (AVIF + WebP sizes + JPG/PNG fallback)
+  img/design/         Images from the owner's design PDF, upscaled (AVIF + WebP sizes + JPG/PNG fallback)
   img/design/icons/   SVG icons (PDF vectors + Font Awesome brand icons)
 .github/workflows/pages.yml   GitHub Pages deployment
 ```
@@ -105,7 +105,7 @@ and `map.linkUrl` once there is an address. No API key needed.
 ### Images
 
 All photos come from the owner's design PDF. For this version each one was re-extracted from the PDF at its native resolution,
-cropped exactly as in the design, upscaled 4x with **Real-ESRGAN** (AI super-resolution), then lightly sharpened and colour-polished.
+cropped exactly as in the design, upscaled 4x with **Real-ESRGAN**, then lightly sharpened and colour-polished.
 They live in `assets/img/design/` as `NAME-WIDTH.avif` and `NAME-WIDTH.webp` (full-width photos up to 3840 px, card photos up to
 2400 px) with a `NAME-1600.jpg` fallback; the transparent bag/duvet images are `.webp` + `.png`. Pages use `srcset`/`sizes`, so
 phones download small files and only large or high-density screens get the big ones. Everything below the hero is lazy-loaded.
@@ -165,3 +165,8 @@ Fonts: [Montserrat](https://github.com/JulietaUla/Montserrat), SIL Open Font Lic
 8. Street address (for the Contact card and map), if you want one public.
 9. Confirm rights to the stock photos inside the design PDF.
 10. Custom domain: not configured on purpose; decide before pointing swiftlaundryservices.com here.
+
+## Author / Credits
+
+Designed and developed by **Innocent Christo** for Swift Laundry Services.  
+© 2026 Innocent Christo. See `humans.txt`.
