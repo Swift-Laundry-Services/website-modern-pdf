@@ -40,7 +40,11 @@ window.SWIFT_CONFIG = {
     embedUrl: "https://maps.google.com/maps?q=Garfield%20Heights%2C%20OH&z=13&output=embed"
   },
 
-  /* Social profiles: full URLs. Icons appear on the Contact page and footer once set.
+  /* PICKUP TIME SLOTS (Order page). Each start time becomes a 1-hour slot, e.g. "9:00 AM" shows as "9:00 AM – 10:00 AM".
+     TODO(owner): confirm your real pickup hours. Use the format "9:30 AM". */
+  pickup: { slotMinutes: 60, morning: ["9:00 AM", "10:00 AM", "11:00 AM"], afternoon: ["1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM"] },
+
+    /* Social profiles: full URLs. Icons appear on the Contact page and footer once set.
      (There is no X / Twitter account, so the site has no X icon.) */
   social: {
     instagram: "https://www.instagram.com/swiftlaundryservicess/",

@@ -681,3 +681,33 @@ a.contact-card:hover { transform: translateY(-4px); box-shadow: var(--sh-2); }
   .menu-panel li.menu-call a:active { transform: scale(.98); }
 }
 @media (max-width: 860px) and (prefers-reduced-motion: reduce) { .menu-panel { animation: none; } }
+
+/* ---------- Order page: load quantities, pickup time slots, total ---------- */
+.ox { --ox-main: var(--ox-c, #5b2a9d); --ox-soft: color-mix(in srgb, var(--ox-main) 8%, #fff); --ox-line: color-mix(in srgb, var(--ox-main) 32%, #fff); }
+.ox-loads { display: grid; gap: 12px; margin: 10px 0 12px; }
+.ox-row { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 8px 16px; padding: 12px 16px; border-radius: 16px; background: #fff; box-shadow: inset 0 0 0 1.5px var(--ox-line); }
+.ox-row.is-on { background: var(--ox-soft); box-shadow: inset 0 0 0 2px var(--ox-main); }
+.ox-info { display: grid; gap: 2px; min-width: 0; }
+.ox-info strong { font-size: 1rem; }
+.ox-info span { font-size: .85rem; opacity: .75; }
+.ox-price { font-weight: 800; color: var(--ox-main); }
+.ox-qty { display: inline-flex; align-items: center; border-radius: 999px; box-shadow: inset 0 0 0 1.5px var(--ox-line); background: #fff; overflow: hidden; }
+.ox-btn { width: 44px; height: 44px; border: 0; background: transparent; color: var(--ox-main); font-size: 1.4rem; font-weight: 700; cursor: pointer; line-height: 1; }
+.ox-btn:hover { background: var(--ox-soft); }
+.ox-btn:focus-visible, .ox-in:focus-visible { outline: 3px solid #1ab6e8; outline-offset: -3px; }
+.ox-in { width: 44px; height: 44px; border: 0; text-align: center; font: inherit; font-weight: 800; color: var(--ox-main); background: transparent; -moz-appearance: textfield; appearance: textfield; }
+.ox-in::-webkit-outer-spin-button, .ox-in::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.ox-error { min-height: 1.2em; margin: 0 0 6px; color: #b3261e; font-weight: 600; }
+.ox-total { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 20px; margin: 18px 0 4px; border-radius: 16px; background: var(--ox-main); color: #fff; font-weight: 700; }
+.ox-total strong { font-size: 1.6rem; font-weight: 800; }
+.ox-total small { display: block; font-weight: 500; opacity: .9; font-size: .8rem; }
+.ox-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 8px; }
+.ox-h { margin: 0 0 10px; font-size: .95rem; opacity: .8; }
+.ox-grid { display: grid; gap: 8px; }
+.ox-slot { position: relative; display: block; }
+.ox-slot input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; cursor: pointer; margin: 0; }
+.ox-slot span { display: flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 12px; border-radius: 14px; background: #fff; box-shadow: inset 0 0 0 1.5px var(--ox-line); color: var(--ox-main); font-weight: 700; font-size: .92rem; transition: background-color .2s, color .2s; }
+.ox-slot input:hover + span { background: var(--ox-soft); }
+.ox-slot input:checked + span { background: var(--ox-main); color: #fff; }
+.ox-slot input:focus-visible + span { outline: 3px solid #1ab6e8; outline-offset: 2px; }
+@media (max-width: 560px) { .ox-row { grid-template-columns: 1fr auto; } .ox-price { grid-column: 2; grid-row: 1; } .ox-qty { grid-column: 1 / -1; justify-self: start; } .ox-cols { grid-template-columns: 1fr; } }

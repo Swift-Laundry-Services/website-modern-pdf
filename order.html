@@ -81,6 +81,12 @@
             </div>
           </fieldset>
         </div>
+        <fieldset class="fieldset ox" style="--ox-c:#3E157B;margin-top:20px">
+          <legend>How much laundry? <span class="optional">(Wash &amp; Fold loads)</span></legend>
+          <div class="ox-loads" data-ox-loads role="group" aria-label="Load sizes"></div>
+          <p class="ox-error" data-ox-error aria-live="polite"></p>
+          <small>Any additional weight will be <span data-price="extraPerLb">$1.90</span>/lb (we weigh your order at pickup).</small>
+        </fieldset>
         <div class="form-grid form-grid--2" style="margin-top:20px">
           <div class="field">
           <label for="o-name">Full name</label>
@@ -89,7 +95,7 @@
         </div>
           <div class="field">
           <label for="o-phone">Phone</label>
-          <input class="input" id="o-phone" name="o-phone" type="tel" required autocomplete="tel" placeholder="(555) 123-4567" aria-describedby="o-phone-error" pattern="[0-9()+.\- ]{7,}" data-msg-pattern="Please enter a valid phone number.">
+          <input class="input" id="o-phone" name="o-phone" type="tel" required autocomplete="tel" placeholder="(555) 123-4567" aria-describedby="o-phone-error" pattern="[0-9\(\)+. \-]{7,}" data-msg-pattern="Please enter a valid phone number.">
           <span class="field-error" id="o-phone-error" aria-live="polite"></span>
         </div>
           <div class="field">
@@ -102,6 +108,12 @@
           <input class="input" id="o-date" name="o-date" type="date" required aria-describedby="o-date-error" data-min-today>
           <span class="field-error" id="o-date-error" aria-live="polite"></span>
         </div>
+          <fieldset class="fieldset span-2 ox" style="--ox-c:#3E157B" data-require-one="Please choose a pickup time slot." data-summary-group data-summary-label="Pickup time">
+            <legend>Pickup time slot <span class="optional">(1 hour)</span></legend>
+            <div class="ox-cols"><div><h3 class="ox-h">Morning</h3><div class="ox-grid" data-ox-morning></div></div><div><h3 class="ox-h">Afternoon</h3><div class="ox-grid" data-ox-afternoon></div></div></div>
+            <span class="field-error" aria-live="polite"></span>
+            <small>Pickup hours to be confirmed. We confirm your time with you.</small>
+          </fieldset>
           <div class="field span-2">
           <label for="o-address">Pickup address</label>
           <input class="input" id="o-address" name="o-address" type="text" required autocomplete="street-address" placeholder="Street address, apartment / unit" aria-describedby="o-address-error">
@@ -133,9 +145,12 @@
           <span class="field-error" id="o-notes-error" aria-live="polite"></span>
         </div>
         </div>
+        <div class="ox ox-total" style="--ox-c:#3E157B" aria-live="polite"><div>Estimated total<small>Final price is confirmed when we check your order at pickup.</small></div><strong data-ox-total>$0.00</strong></div>
+        <div class="field" style="display:none" data-summary-label="Order"><input type="hidden" data-ox-lines name="order-lines"></div>
+        <div class="field" style="display:none" data-summary-label="Estimated total"><input type="hidden" data-ox-totalval name="order-total"></div>
         <div class="form-actions">
           <button class="btn btn--purple" type="submit">Request pickup</button>
-          <small>No payment is taken online.</small>
+          <small>No payment is taken online. You pay once your laundry has been checked and confirmed at pickup.</small>
         </div>
       </form>
     </div>
@@ -192,5 +207,6 @@
 <script src="assets/js/site-config.js"></script>
 <script src="assets/vendor/lenis.min.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="assets/js/order-extras.js"></script>
 </body>
 </html>
